@@ -8,7 +8,6 @@ import (
 	"time"
 )
 
-// Response yapımız
 type Response struct {
 	Message   string    `json:"message"`
 	Timestamp time.Time `json:"timestamp"`
@@ -17,7 +16,6 @@ type Response struct {
 }
 
 func main() {
-	// Ana sayfa
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
 			http.NotFound(w, r)
@@ -26,7 +24,6 @@ func main() {
 		fmt.Fprintf(w, "Hoş geldiniz! Bu sayfa Ngrok üzerinden erişildi.")
 	})
 
-	// API endpoint'i
 	http.HandleFunc("/api/info", func(w http.ResponseWriter, r *http.Request) {
 		response := Response{
 			Message:   "API başarıyla çalışıyor",
